@@ -1,7 +1,6 @@
-<!-- Run the aruco_detect node -->
+<!-- Run the aruco_detect node and aruco_to_apriltag script -->
 <launch>
-  <!-- namespace for camera input -->
-
+  <!-- Namespace for camera input -->
   <arg name="transport" default="raw"/>
   <arg name="fiducial_len" default="0.14"/>
   <arg name="dictionary" default="1"/>
@@ -12,6 +11,7 @@
   <arg name="fiducial_len_override" default="" />
   <arg name="verbose" default="false"/>
 
+  <!-- Launch aruco_detect node -->
   <node pkg="aruco_detect" name="aruco_detect"
     type="aruco_detect" output="screen" respawn="false">
     <param name="image_transport" value="$(arg transport)"/>
@@ -23,8 +23,13 @@
     <param name="ignore_fiducials" value="$(arg ignore_fiducials)"/>
     <param name="fiducial_len_override" value="$(arg fiducial_len_override)"/>
     <param name="verbose" value="$(arg verbose)"/>
-    <remap from="camera" 
-        to="/trisect/left/image_raw"/>
+    <remap from="camera" to="/trisect/left/image_raw"/>
     <remap from="camera_info" to="/trisect/left/camera_info"/>
   </node>
+
+  <!-- Launch aruco_to_apriltag script -->
+  <node pkg="aruco_to_apriltag" name="aruco_to_apriltag_node"
+    type="aruco_to_apriltag_node.py" output="screen" respawn="false">
+  </node>
+
 </launch>
