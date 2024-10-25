@@ -33,7 +33,7 @@ def fiducial_to_apriltag_callback(data):
     for transform in data.transforms:
         apriltag_msg = Apriltag()
         apriltag_msg.id = transform.fiducial_id
-        apriltag_msg.family = "aruco"
+        apriltag_msg.family = "4X4_250"
         apriltag_msg.hamming = 0
         apriltag_msg.border = 1
         apriltag_msg.bits = 6
