@@ -1,2 +1,2 @@
 # aruco_to_apriltag
-A ROS package that converts aruco detections (of type FiducialTransformArray and FiducialArray) and april tag detections (of type ApriltagArrayStamped).
+A ROS package that converts ArUco detections (of type FiducialTransformArray and FiducialArray) to AprilTag detections (of type ApriltagArrayStamped).
